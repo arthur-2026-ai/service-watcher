@@ -5,7 +5,7 @@ LOG_FILE="../logs/service.log"
 
 > "$LOG_FILE"
 
-SERVICE_OK="cron"
+SERVICE_OK="ssh"
 $SCRIPT "$SERVICE_OK"
 
 if grep -q "Le service '$SERVICE_OK' est actif" "$LOG_FILE"; then
