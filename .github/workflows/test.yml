@@ -1,0 +1,21 @@
+name: Tester le service-watcher
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Cloner le dépôt
+        uses: actions/checkout@v3
+
+      - name: 🔒 Donner les droits d’exécution aux scripts
+        run: chmod +x check_service.sh tests/test_check_service.sh
+
+      - name: 🧪 Lancer les tests
+        run: bash tests/test_check_service.sh
