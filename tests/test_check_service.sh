@@ -1,20 +1,18 @@
+
 #!/bin/bash
 
-LOG_FILE="logs/service.log"
-SCRIPT="check_service.sh"
+# Toujours relatif à la racine du dépôt
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")"/.. && pwd)"
+LOG_FILE="$ROOT_DIR/logs/service.log"
+SCRIPT="$ROOT_DIR/check_service.sh"
 SERVICE_OK="ssh"
 
-# 🛠 Créer le dossier logs s’il n’existe pas
-mkdir -p logs
-
-# 🔄 Nettoyage du log précédent
+mkdir -p "$(dirname "$LOG_FILE")"
 > "$LOG_FILE"
 
-# ➡️ Test 1 : service existant
 echo "➡️ Test 1 : Service actif ($SERVICE_OK)"
-../$SCRIPT $SERVICE_OK
+bash "$SCRIPT" $SERVICE_OK
 
-# ✅ Vérification du log
 if grep -q "actif" "$LOG_FILE"; then
   echo "✅ Test 1 OK"
 else
