@@ -6,14 +6,12 @@ if [ -z "$1" ]; then
 fi
 
 SERVICE=$1
-LOG_DIR="logs"
-LOG_FILE="$LOG_DIR/service.log"
-DATE=$(date '+%Y-%m-%d %H:%M:%S')
+LOG_FILE="logs/service.log"
 
-mkdir -p "$LOG_DIR"
+mkdir -p logs
 
 if systemctl is-active --quiet "$SERVICE"; then
-    echo "$DATE : ✅ Le service '$SERVICE' est actif." >> "$LOG_FILE"
+  echo "Le service '$SERVICE' est actif." >> "$LOG_FILE"
 else
-    echo "$DATE : ❌ Le service '$SERVICE' est INACTIF ou introuvable!" >> "$LOG_FILE"
+  echo "Le service '$SERVICE' est INACTIF ou introuvable." >> "$LOG_FILE"
 fi

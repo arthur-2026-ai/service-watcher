@@ -1,13 +1,11 @@
 
 #!/bin/bash
 
-# Toujours relatif à la racine du dépôt
-ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")"/.. && pwd)"
-LOG_FILE="$ROOT_DIR/logs/service.log"
-SCRIPT="$ROOT_DIR/check_service.sh"
+LOG_FILE="logs/service.log"
+SCRIPT="./check_service.sh"
 SERVICE_OK="ssh"
 
-mkdir -p "$(dirname "$LOG_FILE")"
+mkdir -p logs
 > "$LOG_FILE"
 
 echo "➡️ Test 1 : Service actif ($SERVICE_OK)"

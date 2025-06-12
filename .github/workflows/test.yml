@@ -2,9 +2,7 @@ name: Tester le service-watcher
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
+    branches: [ main ]
 
 jobs:
   test:
@@ -14,7 +12,7 @@ jobs:
       - name: 📥 Cloner le dépôt
         uses: actions/checkout@v3
 
-      - name: 🔒 Donner les droits d’exécution aux scripts
+      - name: 🔓 Rendre les scripts exécutables
         run: chmod +x check_service.sh tests/test_check_service.sh
 
       - name: 🧪 Lancer les tests
