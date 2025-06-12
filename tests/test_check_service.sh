@@ -12,7 +12,7 @@ mkdir -p logs
 
 # ➡️ Test 1 : service existant
 echo "➡️ Test 1 : Service actif ($SERVICE_OK)"
-./$SCRIPT $SERVICE_OK
+../$SCRIPT $SERVICE_OK
 
 # ✅ Vérification du log
 if grep -q "actif" "$LOG_FILE"; then

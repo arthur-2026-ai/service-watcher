@@ -15,5 +15,5 @@ mkdir -p "$LOG_DIR"
 if systemctl is-active --quiet "$SERVICE"; then
     echo "$DATE : ✅ Le service '$SERVICE' est actif." >> "$LOG_FILE"
 else
-    echo "$DATE : ❌ Le service '$SERVICE' est INACTIF !" >> "$LOG_FILE"
+    echo "$DATE : ❌ Le service '$SERVICE' est INACTIF ou introuvable!" >> "$LOG_FILE"
 fi
