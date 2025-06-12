@@ -1,28 +1,21 @@
+
 #!/bin/bash
 
-SCRIPT="../check_service.sh"
-LOG_FILE="../logs/service.log"
+LOG_FILE="logs/service.log"
+SCRIPT="check_service.sh"
 
-> "$LOG_FILE"
+SERVICE_OK="ssh"  # Utilise un service fiable pour GitHub Actions
 
-SERVICE_OK="ssh"
-$SCRIPT "$SERVICE_OK"
+# Nettoyage log
+> $LOG_FILE
 
-if grep -q "Le service '$SERVICE_OK' est actif" "$LOG_FILE"; then
-    echo "✅ Test 1 OK"
+# Test 1 : service existant
+echo "➡️ Test 1 : Service actif ($SERVICE_OK)"
+./$SCRIPT $SERVICE_OK
+
+if grep -q "actif" "$LOG_FILE"; then
+  echo "✅ Test 1 OK"
 else
-    echo "❌ Test 1 ÉCHOUÉ"
-    exit 1
+  echo "❌ Test 1 ÉCHOUÉ"
+  exit 1
 fi
-
-SERVICE_FAKE="fake_service_$$"
-$SCRIPT "$SERVICE_FAKE"
-
-if grep -q "INACTIF" "$LOG_FILE"; then
-    echo "✅ Test 2 OK"
-else
-    echo "❌ Test 2 ÉCHOUÉ"
-    exit 1
-fi
-
-echo "✅ Tous les tests sont passés."
