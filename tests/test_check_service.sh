@@ -2,7 +2,7 @@
 #!/bin/bash
 
 LOG_FILE="logs/service.log"
-SCRIPT="./check_service.sh"
+SCRIPT="../check_service.sh"
 SERVICE_OK="ssh"
 
 mkdir -p logs
