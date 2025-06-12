@@ -1,10 +1,10 @@
-
 #!/bin/bash
 
 LOG_FILE="logs/service.log"
-SCRIPT="$(dirname "$0")/../check_service.sh"
+SCRIPT="./check_service.sh"
 SERVICE_OK="ssh"
 
+# Crée le répertoire de log si nécessaire
 mkdir -p logs
 > "$LOG_FILE"
 

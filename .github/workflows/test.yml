@@ -1,10 +1,10 @@
+
 name: Tester le service-watcher
 
 on:
   push:
     branches: [ main ]
-
-
+  pull_request:
 
 jobs:
   test:
@@ -19,6 +19,3 @@ jobs:
 
       - name: 🧪 Lancer les tests
         run: bash tests/test_check_service.sh
-
-        working-directory: ./service-watcher
-
